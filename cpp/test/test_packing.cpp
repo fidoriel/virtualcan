@@ -17,6 +17,8 @@ TEST(VirtualCanTest, TestCanPacking)
     CanMessage* msg1 = new CanMessage();
     msg1->id = 1338;
     msg1->extended = 0;
+    msg1->rtr = 1;
+    msg1->err = 1;
     msg1->data_size = 2;
     msg1->data[0] = 13;
     msg1->data[1] = 65;
@@ -27,6 +29,8 @@ TEST(VirtualCanTest, TestCanPacking)
     CanMessage* msg2 = new CanMessage();
     unpack_can_msg(buf1, msg2);
     ASSERT_EQ(1338, msg2->id);
+    ASSERT_EQ(1, msg2->rtr);
+    ASSERT_EQ(1, msg2->err);
     ASSERT_EQ(0, msg2->extended);
     ASSERT_EQ(2, msg2->data_size);
     ASSERT_EQ(13, msg2->data[0]);

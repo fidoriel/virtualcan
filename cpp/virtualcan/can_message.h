@@ -9,6 +9,8 @@ namespace virtualcan {
 struct CanMessage {
     uint32_t id;
     uint32_t extended;
+    uint32_t rtr;
+    uint32_t err;
     uint8_t data[8];
     uint8_t data_size;
 };
